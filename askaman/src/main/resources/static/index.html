@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AskAman | AI Representative</title>
+
+    <meta name="description"
+          content="AskAman is an AI-powered interactive professional representative of Aman Kumar.">
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="app" id="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">A</div>
+
+            <div class="brand-info">
+                <h2>AskAman</h2>
+                <span>AI Representative</span>
+            </div>
+        </div>
+
+        <button class="new-chat-btn" onclick="newChat()">
+            <span>＋</span>
+            New Chat
+        </button>
+
+        <div class="sidebar-section">
+
+            <div class="section-title">
+                AI TOOLS
+            </div>
+
+            <button class="side-item active" data-section="chat" onclick="openSection('chat')">
+                <span>✦</span>
+                Ask Aman
+            </button>
+
+
+
+
+            <button class="side-item" data-section="projects" onclick="openSection('projects')">
+                <span>◆</span>
+                Projects
+            </button>
+
+
+
+            <button class="side-item" data-section="recruiter" onclick="openSection('recruiter')">
+                <span>→</span>
+                Recruiter Mode
+            </button>
+
+
+
+        </div>
+
+        <div class="sidebar-section resources-section">
+
+            <div class="section-title">
+                RESOURCES
+            </div>
+
+            <div class="resource-links">
+
+                <!-- Download Resume -->
+                <button class="resource-item" onclick="downloadResume()">
+            <span class="resource-icon resume-icon">
+                ↓
+            </span>
+                    <span>Download Resume</span>
+                </button>
+
+                <!-- LinkedIn -->
+                <button class="resource-item" onclick="openLinkedIn()">
+                    <img
+                            class="brand-icon linkedin-icon"
+                            src="https://cdn.simpleicons.org/linkedin"
+                            alt="LinkedIn"
+                    >
+                    <span>LinkedIn</span>
+                </button>
+
+                <!-- GitHub -->
+                <button class="resource-item" onclick="openGitHub()">
+                    <img
+                            class="brand-icon github-icon"
+                            src="https://cdn.simpleicons.org/github"
+                            alt="GitHub"
+                    >
+                    <span>GitHub</span>
+                </button>
+
+                <!-- LeetCode -->
+                <button class="resource-item" onclick="openLeetCode()">
+                    <img
+                            class="brand-icon leetcode-icon"
+                            src="https://cdn.simpleicons.org/leetcode"
+                            alt="LeetCode"
+                    >
+                    <span>LeetCode</span>
+                </button>
+
+                <!-- HackerRank -->
+                <button class="resource-item" onclick="openHackerRank()">
+                    <img
+                            class="brand-icon hackerrank-icon"
+                            src="https://cdn.simpleicons.org/hackerrank"
+                            alt="HackerRank"
+                    >
+                    <span>HackerRank</span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="online-status">
+                <span class="status-dot"></span>
+                AI representative online
+            </div>
+
+            <div class="sidebar-footer">
+                Built by Aman Kumar
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                ≡
+            </button>
+
+            <div class="topbar-title">
+                <h1 id="pageTitle">AskAman</h1>
+                <p id="pageSubtitle">
+                    AI-powered professional representative of Aman
+                </p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+                    ◐
+                </button>
+
+                <div class="mini-avatar">
+                    A
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content" id="content">
+
+            <!-- CHAT SECTION -->
+
+            <div class="section-view chat-view active" id="chatSection">
+
+                <div class="chat-container">
+
+                    <div class="welcome-area" id="welcomeArea">
+
+                        <div class="ai-avatar large">
+                            A
+                        </div>
+
+                        <h2>Hi, I'm AskAman.</h2>
+
+                        <p>
+                            An AI-powered representative of Aman Kumar.
+                            Ask me anything about his skills, experience,
+                            projects or background.
+                        </p>
+
+                        <div class="quick-prompts">
+
+                            <button onclick="sendQuickPrompt('Who is Aman?')">
+                                <span>A</span>
+                                <div>
+                                    <strong>Who is Aman?</strong>
+                                    <small>Get a quick professional overview</small>
+                                </div>
+                            </button>
+
+                            <button onclick="sendQuickPrompt('Why should I hire Aman?')">
+                                <span>→</span>
+                                <div>
+                                    <strong>Why should I hire Aman?</strong>
+                                    <small>Understand his strengths</small>
+                                </div>
+                            </button>
+
+                            <button onclick="sendQuickPrompt('Show me Aman’s best projects')">
+                                <span>↗</span>
+                                <div>
+                                    <strong>Show me his projects</strong>
+                                    <small>Explore his technical work</small>
+                                </div>
+                            </button>
+
+                            <button onclick="sendQuickPrompt('What are Aman’s strongest technical skills?')">
+                                <span>&lt;/&gt;</span>
+                                <div>
+                                    <strong>Technical skills</strong>
+                                    <small>Explore his technology stack</small>
+                                </div>
+                            </button>
+
+                            <button onclick="sendQuickPrompt('Tell me about Aman’s internship experience')">
+                                <span>•</span>
+                                <div>
+                                    <strong>Internship experience</strong>
+                                    <small>Explore his industry experience</small>
+                                </div>
+                            </button>
+
+                            <button onclick="sendQuickPrompt('Give me Aman’s resume')">
+                                <span>↓</span>
+                                <div>
+                                    <strong>View resume</strong>
+                                    <small>Access his latest resume</small>
+                                </div>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CHAT MESSAGES -->
+
+                    <div class="messages" id="messages"></div>
+
+                </div>
+
+
+                <!-- CHAT INPUT -->
+
+                <div class="input-wrapper">
+
+                    <div class="input-box">
+
+                        <textarea
+                                id="chatInput"
+                                placeholder="Ask anything about Aman..."
+                                rows="1"
+                                onkeydown="handleInputKey(event)"
+                        ></textarea>
+
+                        <div class="input-actions">
+
+                            <button class="input-icon" title="Voice input" onclick="startVoiceInput()">
+                                🎙
+                            </button>
+
+                            <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                                ↑
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <p class="input-note">
+                        AskAman answers based on Aman’s professional profile and verified information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECTS -->
+
+            <div class="section-view" id="projectsSection">
+
+                <div class="page-container">
+
+                    <div class="page-heading">
+                        <span class="heading-icon">↗</span>
+
+                        <div>
+                            <h2>Projects</h2>
+                            <p>Technical work and applications</p>
+                        </div>
+                    </div>
+
+                    <div class="project-grid">
+
+                        <article class="project-card">
+
+                            <div class="project-icon">
+                                E
+                            </div>
+
+                            <div class="project-top">
+                                <h3>Edu-Manager</h3>
+                                <span class="project-type">Backend</span>
+                            </div>
+
+                            <p>
+                                Student Management System built to manage
+                                student, attendance, enrollment and fee
+                                operations.
+                            </p>
+
+                            <div class="tags">
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>MySQL</span>
+                                <span>JPA</span>
+                            </div>
+
+                            <div class="project-stats">
+                                <span>12+ REST APIs</span>
+                                <span>Layered Architecture</span>
+                            </div>
+
+                            <button class="project-btn"
+                                    onclick="sendQuickPrompt('Explain Aman’s Edu-Manager project in detail')">
+                                Explore with AI →
+                            </button>
+
+                        </article>
+
+
+                        <article class="project-card">
+
+                            <div class="project-icon">
+                                B
+                            </div>
+
+                            <div class="project-top">
+                                <h3>Smart Bookmark</h3>
+                                <span class="project-type">Full Stack</span>
+                            </div>
+
+                            <p>
+                                Full-stack bookmark management application
+                                with authentication and cloud database
+                                integration.
+                            </p>
+
+                            <div class="tags">
+                                <span>Next.js</span>
+                                <span>Supabase</span>
+                                <span>Tailwind</span>
+                                <span>Vercel</span>
+                            </div>
+
+                            <div class="project-stats">
+                                <span>Authentication</span>
+                                <span>Cloud Database</span>
+                            </div>
+
+                            <button class="project-btn"
+                                    onclick="sendQuickPrompt('Explain Aman’s Smart Bookmark project in detail')">
+                                Explore with AI →
+                            </button>
+
+                        </article>
+
+
+                        <article class="project-card">
+
+                            <div class="project-icon">
+                                A
+                            </div>
+
+                            <div class="project-top">
+                                <h3>AskAman</h3>
+                                <span class="project-type">AI</span>
+                            </div>
+
+                            <p>
+                                Interactive AI-powered candidate portfolio
+                                that allows recruiters to explore Aman
+                                through natural-language conversation.
+                            </p>
+
+                            <div class="tags">
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>AI</span>
+                                <span>RAG</span>
+                            </div>
+
+                            <div class="project-stats">
+                                <span>Recruiter Mode</span>
+                                <span>AI Representative</span>
+                            </div>
+
+                            <button class="project-btn"
+                                    onclick="sendQuickPrompt('Explain how AskAman works technically')">
+                                Explore with AI →
+                            </button>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECRUITER MODE -->
+
+            <div class="section-view" id="recruiterSection">
+
+                <div class="page-container">
+
+                    <div class="page-heading">
+                        <span class="heading-icon">→</span>
+
+                        <div>
+                            <h2>Recruiter Mode</h2>
+                            <p>Evaluate Aman against a job requirement</p>
+                        </div>
+                    </div>
+
+                    <div class="recruiter-card">
+
+                        <div class="recruiter-intro">
+                            <h3>Candidate Fit Analysis</h3>
+
+                            <p>
+                                Paste a job description and AskAman will
+                                compare the requirements with Aman’s
+                                verified skills and experience.
+                            </p>
+                        </div>
+
+                        <textarea
+                                id="jdInput"
+                                class="jd-input"
+                                placeholder="Paste the job description here..."
+                        ></textarea>
+
+                        <button class="primary-btn"
+                                onclick="analyzeJD()">
+                            Analyze Candidate Fit →
+                        </button>
+
+                        <div id="jdResult" class="jd-result"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INTERVIEW -->
+
+            <div class="section-view" id="interviewSection">
+
+                <div class="page-container">
+
+                    <div class="page-heading">
+                        <span class="heading-icon">Q</span>
+
+                        <div>
+                            <h2>Interview Aman</h2>
+                            <p>Ask technical questions and evaluate responses</p>
+                        </div>
+                    </div>
+
+                    <div class="interview-card">
+
+                        <div class="interview-header">
+                            <div class="ai-avatar">
+                                A
+                            </div>
+
+                            <div>
+                                <h3>AI Interviewer</h3>
+                                <p>Java Backend Interview</p>
+                            </div>
+                        </div>
+
+                        <div class="interview-question">
+                            <span>Question 1</span>
+
+                            <h3>
+                                Explain the difference between
+                                method overloading and method overriding
+                                in Java.
+                            </h3>
+                        </div>
+
+                        <textarea
+                                id="interviewAnswer"
+                                class="interview-input"
+                                placeholder="Write your answer..."
+                        ></textarea>
+
+                        <button class="primary-btn"
+                                onclick="evaluateInterview()">
+                            Evaluate Answer →
+                        </button>
+
+                        <div id="interviewResult"
+                             class="interview-result">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>
